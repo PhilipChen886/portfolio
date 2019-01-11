@@ -19,13 +19,32 @@ def print_origin():
     print(origin)
     return
 
-def parse():                                                # hierachy: paragraph >> sentence >> sub-sentence >> elements
+def parse():                                                # hierachy: paragraph >> sentence >> sub-sentence >> pre-elements >> elements
     global main_list
     main_list = origin.splitlines()                         # removes newlines
     for i in range (len (main_list)-1, -1, -1):             # removes blank elements
         if (main_list[i] == ''):
             main_list.pop(i)
             i = i+1
+    return
+
+def new_parse():
+    global main_list2
+    main_list2 = [ [""], [""] ]
+    j = 0
+    k = 0
+    for i in range( len(origin) ):
+        if (origin[i] == "\n" and origin[i+1] == "\n"):
+            main_list2.append( [""] )
+            j += 1
+            k = 0
+        elif (origin[i-1] == "。" and i != 0):
+            main_list2[j].append( "" )
+            k += 1
+
+        if (origin[i] != "\n"):
+            main_list2[j][k] += origin[i]
+    print(main_list2[3])
     return
 
 def print_main():
