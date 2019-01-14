@@ -19,7 +19,7 @@ def print_origin():
     print(origin)
     return
 
-def parse():                                                # hierachy: paragraph >> sentence >> sub-sentence >> pre-elements >> elements
+def parse():                                                #!NOTE  hierachy: paragraph >> sentence >> sub-sentence >> pre-elements >> elements
     global main_list
     main_list = origin.splitlines()                         # removes newlines
     for i in range (len (main_list)-1, -1, -1):             # removes blank elements
@@ -33,7 +33,11 @@ def new_parse():
     main_list2 = [ [""], [""] ]
     j = 0
     k = 0
+    #char_counter = 0
     for i in range( len(origin) ):
+        #!NOTE character check
+
+        #!NOTE parsing
         if (origin[i] == "\n" and origin[i+1] == "\n"):
             main_list2.append( [""] )
             j += 1
@@ -44,7 +48,9 @@ def new_parse():
 
         if (origin[i] != "\n"):
             main_list2[j][k] += origin[i]
-    print(main_list2[3])
+        #char_counter += 1
+    #print(char_counter)
+    #print(sys.getsizeof(main_list2))
     return
 
 def print_main():
@@ -55,3 +61,7 @@ def print_main():
 def print_main_list():
     print(main_list)
     return
+
+def print_test():
+    for i in range(12353, 12436):
+        print( chr(i) )
